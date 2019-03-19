@@ -233,7 +233,7 @@ public class Sudoku extends LatinSquare {
 			}
 		}
 
-		if (ContainsZero()) {
+		if (ContainsZero()) { 
 			return false;
 		}
 
