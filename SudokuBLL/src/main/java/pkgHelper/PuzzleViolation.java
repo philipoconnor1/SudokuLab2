@@ -4,7 +4,7 @@ import pkgEnum.ePuzzleViolation;
 
 public class PuzzleViolation {
 
-	private ePuzzleViolation ePuzzleViolation;
+	private ePuzzleViolation ePuzzleViolation; 
 	private int iValue;
 
 	/**

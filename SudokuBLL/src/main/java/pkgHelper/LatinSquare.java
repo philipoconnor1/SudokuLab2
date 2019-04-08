@@ -1,12 +1,11 @@
- package pkgHelper;
+package pkgHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import org.apache.commons.lang.ArrayUtils;
 
 import pkgEnum.ePuzzleViolation;
-
+ 
 public class LatinSquare {
 
 	/**

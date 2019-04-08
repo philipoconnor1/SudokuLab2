@@ -1,5 +1,8 @@
 package pkgGame;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 import pkgEnum.ePuzzleViolation;
 import pkgHelper.LatinSquare;
 import pkgHelper.PuzzleViolation;
@@ -23,7 +26,7 @@ public class Sudoku extends LatinSquare {
 	 * @since Lab #2
 	 */
 	private int iSize;
-
+	
 	/**
 	 * iSqrtSize - SquareRoot of the iSize. If the iSize is 9, iSqrtSize will be
 	 * calculated as 3
@@ -271,4 +274,55 @@ public class Sudoku extends LatinSquare {
 		
 		return true;
 	}
+	
+	public int getRegionNbr(int Col, int Row) {
+		return (Col / iSqrtSize) + ((Row / iSqrtSize) * iSqrtSize);
+	}
+
+	public void printPuzzle() {
+		for (int i = 0; i < iSize; i++) {
+			for (int j = 0; j < iSize; j++) {
+				if ((j + 1) % iSqrtSize == 0) {
+					System.out.print(getPuzzle()[i][j] + " ");
+				} else {
+					System.out.print(getPuzzle()[i][j]);
+				}
+			}
+			System.out.println();
+			if((i + 1) % iSqrtSize == 0) {
+				System.out.println();
+			}
+		}
+	}
+	
+	private void fillDiagonalRegions() {
+		for(int i = 0; i < iSqrtSize; i++) {
+			setRegion((iSqrtSize * i) + 1);
+			shuffleRegion((iSqrtSize * i) + 1);
+		}
+	} 
+	
+	private void setRegion(int r) {
+		int i = (r / iSqrtSize) * iSqrtSize;
+		int j = (r % iSqrtSize) * iSqrtSize;		
+		int jMax = j + iSqrtSize;
+		int iMax = i + iSqrtSize;
+		int count = 1;
+
+		for (i = (r / iSqrtSize) * iSqrtSize; i < iMax; i++) {
+			for (j = (r % iSqrtSize) * iSqrtSize; j < jMax; j++) {
+				getPuzzle()[i][j] = count;
+				count++;
+			}
+		}
+	}
+
+	private void shuffleArray(int[] arr) {
+		Collections.shuffle(Arrays.asList(arr));
+	}
+
+	private void shuffleRegion(int r) {
+		Collections.shuffle(Arrays.asList(getRegion(r)));
+	}
+	
 }

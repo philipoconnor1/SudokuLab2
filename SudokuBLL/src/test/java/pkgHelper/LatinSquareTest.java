@@ -23,7 +23,7 @@ public class LatinSquareTest {
 	}
 
 	@Test
-	public void hasDuplicates_test2() {
+	public void hasDuplicates_test2() { 
 
 		LatinSquare LS = new LatinSquare();
 		int[] arr = { 1, 3, 5, 2, 3 };
