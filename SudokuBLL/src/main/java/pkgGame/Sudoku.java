@@ -1,7 +1,9 @@
 package pkgGame;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 import pkgEnum.ePuzzleViolation;
 import pkgHelper.LatinSquare;
@@ -295,14 +297,14 @@ public class Sudoku extends LatinSquare {
 		}
 	}
 	
-	private void fillDiagonalRegions() {
+	public void fillDiagonalRegions() {
 		for(int i = 0; i < iSqrtSize; i++) {
-			setRegion((iSqrtSize * i) + 1);
-			shuffleRegion((iSqrtSize * i) + 1);
+			setRegion((iSqrtSize + 1) * i);
+			shuffleRegion((iSqrtSize + 1) * i);
 		}
 	} 
 	
-	private void setRegion(int r) {
+	public void setRegion(int r) {
 		int i = (r / iSqrtSize) * iSqrtSize;
 		int j = (r % iSqrtSize) * iSqrtSize;		
 		int jMax = j + iSqrtSize;
@@ -317,12 +319,42 @@ public class Sudoku extends LatinSquare {
 		}
 	}
 
-	private void shuffleArray(int[] arr) {
-		Collections.shuffle(Arrays.asList(arr));
+	public void shuffleArray(int[] arr) {
+		List<Integer> list = new ArrayList<>();
+		  for (int i : arr) {
+		    list.add(i);
+		  }
+
+		  Collections.shuffle(list);
+
+		  for (int i = 0; i < list.size(); i++) {
+		    arr[i] = list.get(i);
+		  }
 	}
 
-	private void shuffleRegion(int r) {
-		Collections.shuffle(Arrays.asList(getRegion(r)));
+	public void shuffleRegion(int r) {
+		List<Integer> list = new ArrayList<>();
+		int[] arr = getRegion(r);
+		for (int i : arr) {
+			list.add(i);
+		}
+
+		Collections.shuffle(list);
+
+		for (int i = 0; i < list.size(); i++) {
+			arr[i] = list.get(i);
+		}
+		int i = (r / iSqrtSize) * iSqrtSize;
+		int j = (r % iSqrtSize) * iSqrtSize;
+		int jMax = j + iSqrtSize;
+		int iMax = i + iSqrtSize;
+		int count = 0;
+		for (i = (r / iSqrtSize) * iSqrtSize; i < iMax; i++) {
+			for (j = (r % iSqrtSize) * iSqrtSize; j < jMax; j++) {
+				getPuzzle()[i][j] = arr[count];
+				count++;
+			}
+		}
 	}
 	
 }

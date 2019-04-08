@@ -47,8 +47,7 @@ public class SudokuTest {
 		try {
 			Sudoku s1 = new Sudoku(puzzle);
 
-			region = s1.getRegion(1);
-			System.out.println(Arrays.toString(region));			
+			region = s1.getRegion(1);			
 			assertTrue(Arrays.equals(ExpectedRegion, region));
 
 		} catch (Exception e) {
@@ -75,8 +74,7 @@ public class SudokuTest {
 		try {
 			Sudoku s1 = new Sudoku(puzzle);
 
-			region = s1.getRegion(0,2);
-			System.out.println(Arrays.toString(region));			
+			region = s1.getRegion(0,2);			
 			assertTrue(Arrays.equals(ExpectedRegion, region));
 
 		} catch (Exception e) {
@@ -276,7 +274,7 @@ public class SudokuTest {
 				{ 3, 4, 5, 2, 8, 6, 1, 7, 9 } };
 		
 		Sudoku s = new Sudoku(puzzle);
-		
+		System.out.println("Print Puzzle Test:");
 		s.printPuzzle();
 	}
 	
@@ -290,6 +288,120 @@ public class SudokuTest {
 		
 		Sudoku s = new Sudoku(puzzle);
 		
+		System.out.println("Print Puzzle Test:");
 		s.printPuzzle();
 	}
+	
+	@Test
+	public void TestSetRegion() throws Exception
+	{	
+		int[][] puzzle = {
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 }};
+		
+		Sudoku s = new Sudoku(puzzle);
+		s.setRegion(0);
+		System.out.println("Set Region Test:");
+		s.printPuzzle();
+	}
+	
+	@Test
+	public void Test2SetRegion() throws Exception
+	{	
+		int[][] puzzle = {{ 0, 0, 0, 0 }, 
+				{ 0, 0, 0, 0 }, 
+				{ 0, 0, 0, 0 }, 
+				{ 0, 0, 0, 0 }};
+		
+		Sudoku s = new Sudoku(puzzle);
+		s.setRegion(2);
+		System.out.println("Set Region Test:");
+		s.printPuzzle();
+	}
+	
+	@Test
+	public void TestGetRegionNbr() throws Exception
+	{	
+		int[][] puzzle = { 
+				{ 5, 3, 4, 6, 7, 8, 9, 1, 2 }, 
+				{ 6, 7, 2, 1, 9, 5, 3, 4, 8 }, 
+				{ 1, 9, 8, 3, 4, 2, 5, 6, 7 },
+				{ 8, 5, 9, 7, 6, 1, 4, 2, 3 }, 
+				{ 4, 2, 6, 8, 5, 3, 7, 9, 1 }, 
+				{ 7, 1, 3, 9, 2, 4, 8, 5, 6 },
+				{ 9, 6, 1, 5, 3, 7, 2, 8, 4 }, 
+				{ 2, 8, 7, 4, 1, 9, 6, 3, 5 }, 
+				{ 3, 4, 5, 2, 8, 6, 1, 7, 9 } };
+		
+		Sudoku s = new Sudoku(puzzle);
+		assertEquals(0, s.getRegionNbr(1, 1));
+	}
+	
+	@Test
+	public void Test2GetRegionNbr() throws Exception
+	{	
+		int[][] puzzle = {{ 1, 2, 3, 4 }, 
+				{ 3, 4, 1, 2 }, 
+				{ 2, 1, 4, 3 }, 
+				{ 4, 3, 2, 1 }};
+		
+		Sudoku s = new Sudoku(puzzle);
+		assertEquals(3, s.getRegionNbr(2, 3));
+	}
+	
+	@Test
+	public void TestFillDiagonalRegions() throws Exception
+	{	
+		int[][] puzzle = {{ 0, 0, 0, 0 }, 
+				{ 0, 0, 0, 0 }, 
+				{ 0, 0, 0, 0 }, 
+				{ 0, 0, 0, 0 }};
+		
+		Sudoku s = new Sudoku(puzzle);
+		s.fillDiagonalRegions();
+		System.out.println("Fill Diagonals Test:");
+		s.printPuzzle();
+	}
+	
+	@Test
+	public void Test2FillDiagonalRegions() throws Exception
+	{	
+		int[][] puzzle = {
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 }};
+		
+		Sudoku s = new Sudoku(puzzle);
+		s.fillDiagonalRegions();
+		System.out.println("Fill Diagonals Test:");
+		s.printPuzzle();
+	}
+	
+	@Test
+	public void TestShuffleRegion() throws Exception
+	{	
+		int[][] puzzle = {{ 1, 2, 0, 0 }, 
+				{ 3, 4, 0, 0 }, 
+				{ 0, 0, 0, 0 }, 
+				{ 0, 0, 0, 0 }};
+		
+		Sudoku s = new Sudoku(puzzle);
+		s.shuffleRegion(0);
+		System.out.println("Shuffle Region Test:");
+		s.printPuzzle();
+	}
+	
 }
