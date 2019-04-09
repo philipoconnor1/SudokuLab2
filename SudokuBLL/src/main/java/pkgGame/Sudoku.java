@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.lang.reflect.Method;
 
 import pkgEnum.ePuzzleViolation;
 import pkgHelper.LatinSquare;

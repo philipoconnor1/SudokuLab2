@@ -7,6 +7,7 @@ import java.util.Arrays;
 import org.junit.Test;
 
 import pkgGame.Sudoku;
+import pkgHelper.LatinSquare;
 
 public class SudokuTest {
 
@@ -402,6 +403,37 @@ public class SudokuTest {
 		s.shuffleRegion(0);
 		System.out.println("Shuffle Region Test:");
 		s.printPuzzle();
+	}
+	
+	@Test
+	public void Test2ShuffleRegion() throws Exception
+	{	
+		int[][] puzzle = {
+				{ 1, 2, 3, 0, 0, 0, 0, 0, 0 },
+				{ 4, 5, 6, 0, 0, 0, 0, 0, 0 },
+				{ 7, 8, 9, 0, 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 }};
+		
+		Sudoku s = new Sudoku(puzzle);
+		s.shuffleRegion(0);
+		System.out.println("Shuffle Region Test:");
+		s.printPuzzle();
+	}
+	
+	@Test
+	public void TestShuffleArray() throws Exception
+	{	
+		Sudoku s = new Sudoku(4);
+		int[] arr = { 1, 3, 4, 2,};
+		
+		s.shuffleArray(arr);
+		System.out.println("Shuffle Array Test: \n" + Arrays.toString(arr) + "\n");
+		
 	}
 	
 }

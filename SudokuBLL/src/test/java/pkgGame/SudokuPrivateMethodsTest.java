@@ -1,27 +1,23 @@
 package pkgGame;
 
 import static org.junit.Assert.*;
-
+import java.lang.reflect.Method;
 import org.junit.Test;
 
 import pkgGame.Sudoku;
 
 public class SudokuPrivateMethodsTest {
-
-	@Test
-	public void setregionTest() throws Exception {
-		int[][] puzzle = {
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
+	
+	private void printStars() {
 		
-		Sudoku s = new Sudoku(puzzle); 
+	}
+	
+	public void fillDiagonalRegions() {
+		
+	}
+
+	public void Sudoku_Test_SetRegion() {
+		
 	}
 
 }
